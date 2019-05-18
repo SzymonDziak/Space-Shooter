@@ -23,3 +23,4 @@ public class DestroyByContact : MonoBehaviour
         Destroy(gameObject);
     }
 }
+// testing
