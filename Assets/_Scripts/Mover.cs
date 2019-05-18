@@ -12,10 +12,4 @@ public class Mover : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * speed;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

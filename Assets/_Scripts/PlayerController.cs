@@ -24,40 +24,32 @@ public class PlayerController : MonoBehaviour
     private GameObject newProjectile;
     public Transform shotSpawn;
     public float fireDelta = 0.25f;
-    private float nextFire = 0.05f;
-    private float myTime = 0.0f;
+    private float nextFire = 0.05f, myTime = 0.0f;
+    private AudioSource audiosource;
 
-    // Face mouse function
+    // Ship face mouse function
     public Transform CharacterTransform;
     public float RotationSmoothingCoef;
 
-    // audio
-    private AudioSource audiosource;
-
-    private void Update()
-    {
-        myTime = myTime + Time.deltaTime;
-        shotSpawn.eulerAngles = new Vector3(0.0f, shotSpawn.eulerAngles.y, 0.0f); // fixes bullets falling through the ground
-
-        if (Input.GetButton("Fire1") && myTime > nextFire)
-        {
-            nextFire = myTime + fireDelta;
-            shotSpawn.rotation = Quaternion.Euler(shotSpawn.rotation.eulerAngles.x, shotSpawn.rotation.eulerAngles.y, 0.0f);
-            newProjectile = Instantiate(projectile, shotSpawn.position, shotSpawn.rotation);
-            audiosource.Play();
-
-            // create code here that animates the newProjectil
-
-            nextFire = nextFire - myTime;
-            myTime = 0.0F;
-        }
-    }
+    // Abilities
+    private float maxSpeed;
+    public float boostSpeed;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         audiosource = GetComponent<AudioSource>();
+    }
+    private void Update()
+    {
+        BoostAbility(boostSpeed);
 
+        myTime = myTime + Time.deltaTime;
+        shotSpawn.eulerAngles = new Vector3(0.0f, shotSpawn.eulerAngles.y, 0.0f); // fixes bullets falling through the ground
+        if (Input.GetButton("Fire1") && myTime > nextFire)
+        {
+            Fire();
+        }
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -68,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
         rb.AddForce(movement * speed);
-        
+
         //Boundary
         rb.position = new Vector3
         (
@@ -90,9 +82,30 @@ public class PlayerController : MonoBehaviour
             var targetRotation = Quaternion.LookRotation(lookAtPosition - CharacterTransform.position, Vector3.up);
             var rotation = Quaternion.Lerp(CharacterTransform.rotation, targetRotation, RotationSmoothingCoef);
             rotation.z = rb.velocity.x * -tilt;
-            //Debug.Log("RB Velocity X" + rb.velocity.x * -tilt);
-            //Debug.Log("rotation: " + rotation);
             CharacterTransform.rotation = rotation;
         }
+    }
+    public void BoostAbility(float boostSpeed)
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            speed += boostSpeed;
+        }
+        if(Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed -= boostSpeed;
+        }
+    }
+    public void Fire()
+    {
+        nextFire = myTime + fireDelta;
+        shotSpawn.rotation = Quaternion.Euler(shotSpawn.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0.0f);
+        newProjectile = Instantiate(projectile, shotSpawn.position, shotSpawn.rotation);
+        audiosource.Play();
+
+        // create code here that animates the newProjectile
+
+        nextFire = nextFire - myTime;
+        myTime = 0.0F;
     }
 }
