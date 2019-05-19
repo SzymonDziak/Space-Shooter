@@ -503,11 +503,11 @@ RectTransform:
   m_Father: {fileID: 880313360}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 206.92, y: -125}
-  m_SizeDelta: {x: 350, y: 250}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 640, y: 290}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &772559933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,12 +530,12 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: db77dc2632898264d92b625756e15789, type: 3}
-    m_FontSize: 114
+    m_FontSize: 144
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 18
-    m_MaxSize: 116
-    m_Alignment: 0
+    m_MaxSize: 171
+    m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -580,7 +580,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2dd8025303c2446a74b1a80917e5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazard: {fileID: 7183699278601991833, guid: cfd163a309b73fc42be08cdcc305062c, type: 3}
+  hazards:
+  - {fileID: 7183699278601991833, guid: cfd163a309b73fc42be08cdcc305062c, type: 3}
+  - {fileID: 7745523521878255989, guid: 3f3dce5a0f46d754e9a7dcd4f102899a, type: 3}
+  - {fileID: 3014987166020213911, guid: 5f16c31f819d6cc44ab9ccd7d86bb863, type: 3}
+  - {fileID: 3381235904834078562, guid: 979a80cc61c7588479b8b773595e4290, type: 3}
+  - {fileID: 1852775859749297532, guid: 7b497b184f1ac0e429363bc7f9edd6b8, type: 3}
+  - {fileID: 7772687595418448438, guid: dd3238b3169a971479a660402796a550, type: 3}
   spawnValues: {x: 13.15, y: 0, z: 17}
   hazardCount: 10
   spawnWait: 0.5
@@ -848,7 +854,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.498
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1061,7 +1067,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1042930154
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1153,11 +1159,11 @@ RectTransform:
   m_Father: {fileID: 880313360}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50.47, y: -40.03}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 350, y: 50}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &1069264016
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject hazard;
-    public Vector3 spawnValues;
+    public GameObject[] hazards;
+    public Vector3 spawnValues; // for astreoids
     public int hazardCount;
     public float spawnWait;
     public float startWait;
@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                Application.LoadLevel(Application.loadedLevel);
+                UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             }
         }
     }
@@ -56,6 +56,7 @@ public class GameController : MonoBehaviour
         {
             for (int i = 0; i < hazardCount; i++)
             {
+                GameObject hazard = hazards[Random.Range(0, hazards.Length)];
                 Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), 0.0f, spawnValues.z);
                 Quaternion spawnRotation = Quaternion.identity;
                 Instantiate(hazard, spawnPosition, spawnRotation);
@@ -63,7 +64,6 @@ public class GameController : MonoBehaviour
             }
             if (gameOver)
             {
-                yield return new WaitForSeconds(3);
                 restartText.text = "Press 'R' for Restart";
                 restart = true;
                 break;
@@ -79,7 +79,7 @@ public class GameController : MonoBehaviour
 
     private void UpdateScore()
     {
-        scoreText.text = "" + score;
+        scoreText.text = "" + score.ToString().PadLeft(6,'0');
     }
     public void GameOver()
     {
