@@ -18,12 +18,17 @@ public class GameController : MonoBehaviour
     private Text restartText;
     [SerializeField]
     private Text gameOverText;
+    [SerializeField]
+    private Text selectedMissile;
 
     private bool gameOver;
     private bool restart;
 
     [SerializeField]
     private int score;
+
+    [SerializeField]
+    private float adjustment; // Skybox rotation
 
     // Start is called before the first frame update
     void Start()
@@ -40,11 +45,12 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        RenderSettings.skybox.SetFloat("_Rotation", Time.time * adjustment); // rotates the SKYBOX to bring the game to life.
         if (restart)
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+                UnityEngine.SceneManagement.SceneManager.LoadScene(1);
             }
         }
     }
@@ -69,6 +75,11 @@ public class GameController : MonoBehaviour
                 break;
             }
             yield return new WaitForSeconds(waveWait);
+        }
+        if (gameOver)
+        {
+            restartText.text = "Press 'R' for Restart";
+            restart = true;
         }
     }
     public void AddScore(int newScoreValue)
