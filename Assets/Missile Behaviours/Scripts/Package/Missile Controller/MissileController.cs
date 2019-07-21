@@ -11,7 +11,7 @@ namespace MissileBehaviours.Controller
     {
         #region Properties
         /// <summary>
-        /// Gets or sets the missile name for displaying
+        /// Gets or sets the missile name for displayingg
         /// </summary>
         public String displayName;
         /// <summary>
