@@ -1,11 +1,8 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-
-
 <!-- PROJECT LOGO -->
 <br />
   <h3 align="center">Space Shooter</h3>
-
   <p align="center">
     This project is my first attempt at making a game.
     <br />
